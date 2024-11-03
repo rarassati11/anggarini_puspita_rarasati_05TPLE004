@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.router-link-active {
+  @apply text-blue-500 bg-blue-100;
+}
+
+.router-link-exact-active {
+  @apply text-blue-500 bg-blue-100;
+}
