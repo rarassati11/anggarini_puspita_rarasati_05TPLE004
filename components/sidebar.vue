@@ -1,7 +1,7 @@
 <template>
   <aside class="w-64 bg-white border-r border-gray-200 h-screen fixed">
     <div class="p-6">
-      <h2 class="text-2xl font-bold text-blue-600">UNIVERSITAS<br>BUNG KARNO</h2>
+      <h2 class="text-2xl font-bold text-blue-600">UNIVERSITAS<br>PAMULANG</h2>
     </div>
     <nav class="mt-4 p-4">
       <ul>
