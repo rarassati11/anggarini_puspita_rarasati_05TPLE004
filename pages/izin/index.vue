@@ -1,15 +1,16 @@
 <script setup>
 const data = ref([
-  { kode: 'K001', nama: 'Anggarini', email: 'an@gmail.com', alamat: 'Jl. Percetakan Negara No. 45, Gang J, Rt 001/Rw 09 Cempaka Putih', jabatan: 'Staff' },
-  { kode: 'K002', nama: 'Diana Purnama', email: 'dp@gmail.com', alamat: 'Jl. Mangga Besar No. 12', jabatan: 'Manager' },
-  { kode: 'K003', nama: 'Rudi Hartono', email: 'rh@gmail.com', alamat: 'Jl. Merdeka No. 23', jabatan: 'Supervisor' },
-  { kode: 'K004', nama: 'Siti Aisyah', email: 'sa@gmail.com', alamat: 'Jl. Pemuda No. 19', jabatan: 'Staff' },
-  { kode: 'K005', nama: 'Ahmad Fauzi', email: 'af@gmail.com', alamat: 'Jl. Sudirman No. 67', jabatan: 'Admin' },
-  { kode: 'K001', nama: 'Anggarini', email: 'an@gmail.com', alamat: 'Jl. Percetakan Negara No. 45, Gang J, Rt 001/Rw 09 Cempaka Putih', jabatan: 'Staff' },
-  { kode: 'K002', nama: 'Diana Purnama', email: 'dp@gmail.com', alamat: 'Jl. Mangga Besar No. 12', jabatan: 'Manager' },
-  { kode: 'K003', nama: 'Rudi Hartono', email: 'rh@gmail.com', alamat: 'Jl. Merdeka No. 23', jabatan: 'Supervisor' },
-  { kode: 'K004', nama: 'Siti Aisyah', email: 'sa@gmail.com', alamat: 'Jl. Pemuda No. 19', jabatan: 'Staff' },
-  { kode: 'K005', nama: 'Ahmad Fauzi', email: 'af@gmail.com', alamat: 'Jl. Sudirman No. 67', jabatan: 'Admin' },
+  { kode: 'Achmad Febry', nama: 'Telat' },
+  { kode: 'Achmad Febry', nama: 'Telat' },
+  { kode: 'Achmad Febry', nama: 'Telat' },
+  { kode: 'Achmad Febry', nama: 'Telat' },
+  { kode: 'Achmad Febry', nama: 'Telat' },
+  { kode: 'Achmad Febry', nama: 'Telat' },
+  { kode: 'Achmad Febry', nama: 'Telat' },
+  { kode: 'Achmad Febry', nama: 'Telat' },
+  { kode: 'Achmad Febry', nama: 'Telat' },
+  { kode: 'Achmad Febry', nama: 'Telat' },
+  
 ])
 
 const itemsPerPage = ref(10)
@@ -21,10 +22,7 @@ const filteredData = computed(() => {
     return data.value.filter(
       item =>
         item.kode.toLowerCase().includes(search.value.toLowerCase()) ||
-        item.nama.toLowerCase().includes(search.value.toLowerCase()) ||
-        item.email.toLowerCase().includes(search.value.toLowerCase()) ||
-        item.alamat.toLowerCase().includes(search.value.toLowerCase()) ||
-        item.jabatan.toLowerCase().includes(search.value.toLowerCase())
+        item.nama.toLowerCase().includes(search.value.toLowerCase())
     )
   }
   return data.value
@@ -36,15 +34,14 @@ const paginatedData = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage.value
   const end = start + itemsPerPage.value
   return filteredData.value.slice(start, end)
-}) 
+})
 </script>
-
 <template>
   <div class="p-4">
     <div class="flex items-center justify-between mb-4">
-      <h2 class="text-xl font-semibold">Data Karyawan</h2>
-      <NuxtLink to="/karyawan/create" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-        + Tambah Jabatan
+      <h2 class="text-xl font-semibold">Data Izin</h2>
+      <NuxtLink to="/izin/create" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        + Tambah Izin
       </NuxtLink>
     </div>
   
@@ -63,7 +60,7 @@ const paginatedData = computed(() => {
         <input
           type="text"
           id="search"
-          placeholder="Search by nama Jabatan"
+          placeholder="Search by nama Izin"
           class="border rounded p-1 ml-4"
           v-model="search"
         />
@@ -75,12 +72,9 @@ const paginatedData = computed(() => {
         <thead>
           <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
             <th class="py-3 px-6 text-left">No</th>
-            <th class="py-3 px-6 text-left">Kode</th>
             <th class="py-3 px-6 text-left">Nama</th>
-            <th class="py-3 px-6 text-left">Email</th>
-            <th class="py-3 px-6 text-left">Alamat</th>
-            <th class="py-3 px-6 text-left">Jabatan</th>
-            <th class="py-3 px-6 text-center">Aksi</th>
+            <th class="py-3 px-6 text-left">Izin</th>
+            <th class="py-3 px-6 text-center">Jam</th>
           </tr>
         </thead>
         <tbody class="text-gray-600 text-sm font-light">
@@ -92,23 +86,9 @@ const paginatedData = computed(() => {
             <td class="py-3 px-6 text-left">{{ index + 1 + (currentPage - 1) * itemsPerPage }}</td>
             <td class="py-3 px-6 text-left">{{ item.kode }}</td>
             <td class="py-3 px-6 text-left">{{ item.nama }}</td>
-            <td class="py-3 px-6 text-left">{{ item.email }}</td>
-            <td class="py-3 px-6 text-left">{{ item.alamat }}</td>
-            <td class="py-3 px-6 text-left">{{ item.jabatan }}</td>
             <td class="py-3 px-6 text-center">
               <div class="flex items-center justify-center space-x-2">
-                <button class="flex items-center space-x-1 text-blue-500 hover:text-blue-600 transform hover:scale-110">
-                  <i class="fas fa-eye"></i>
-                  <span>View</span>
-                </button>
-                <button class="flex items-center space-x-1 text-blue-500 hover:text-blue-600 transform hover:scale-110">
-                  <i class="fas fa-edit"></i>
-                  <span>Edit</span>
-                </button>
-                <button class="flex items-center space-x-1 text-red-500 hover:text-red-600 transform hover:scale-110">
-                  <i class="fas fa-trash"></i>
-                  <span>Delete</span>
-                </button>
+                
               </div>
             </td>
           </tr>
